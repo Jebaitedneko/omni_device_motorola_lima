@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+TARGET_BOARD_PLATFORM := mt6771
+
 # Specify phone tech before including full_phone
 $(call inherit-product, vendor/omni/config/gsm.mk)
 
@@ -62,8 +64,7 @@ PRODUCT_PACKAGES += \
     otapreopt_script \
     cppreopts.sh \
     update_engine \
-    update_verifier \
-    update_engine_sideload
+    update_verifier
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := lima
