@@ -1,16 +1,13 @@
-# Android fstab file.
-# The filesystem that contains the filesystem checker binary (typically /system) cannot
-# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
-
-# Mount point		FS	Device							Flags
-/system			ext4	/dev/block/platform/bootdevice/by-name/system		flags=slotselect
-/vendor			ext4	/dev/block/platform/bootdevice/by-name/vendor		flags=slotselect;display=Vendor;backup=1;wipeingui
-/data			ext4	/dev/block/platform/bootdevice/by-name/userdata		flags=encryptable=footer;length=-16384
-
-/boot			emmc	/dev/block/platform/bootdevice/by-name/boot		flags=slotselect
-/recovery		emmc	/dev/block/platform/bootdevice/by-name/recovery
-/vbmeta			emmc	/dev/block/platform/bootdevice/by-name/vbmeta		
-/dtbo			emmc	/dev/block/platform/bootdevice/by-name/dtbo
-
-# External storage
-/sdcard			auto	/dev/block/mmcblk1p1 /dev/block/mmcblk1	flags=fsflags=utf8;display=SDcard;storage;wipeingui;removable
+/system         ext4      /dev/block/bootdevice/by-name/system               flags=display="System"
+/system_image   emmc      /dev/block/bootdevice/by-name/system               flags=backup=0
+/vendor         ext4      /dev/block/bootdevice/by-name/vendor               flags=display="Vendor";backup=1;wipeingui
+/vendor_image   emmc      /dev/block/bootdevice/by-name/vendor               flags=backup=0
+/data           ext4      /dev/block/bootdevice/by-name/userdata             flags=encryptable=footer;length=-16384
+/data           f2fs      /dev/block/bootdevice/by-name/userdata             flags=encryptable=footer;length=-16384
+/cache          ext4      /dev/block/bootdevice/by-name/cache                flags=display="Cache"
+/recovery       emmc      /dev/block/bootdevice/by-name/recovery             flags=display="Recovery";backup=1
+/boot           emmc      /dev/block/bootdevice/by-name/boot                 flags=display="Boot"
+/misc           emmc      /dev/block/bootdevice/by-name/misc                 flags=display="Misc"
+/persist        ext4      /dev/block/bootdevice/by-name/persist              flags=display="Persist";backup=1
+/sdcard1        auto      /dev/block/mmcblk1p1                               flags=display="MicroSD";storage;wipeingui;removable
+/usb-otg        auto      /dev/block/sda1
