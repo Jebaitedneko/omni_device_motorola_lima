@@ -1,3 +1,13 @@
+service keymaster_attestation-1-1 /vendor/bin/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-service
+    interface vendor.mediatek.hardware.keymaster_attestation@1.1::IKeymasterDevice default
+    class hal
+    user system
+    group system
+    disabled
+    
+on property:ro.crypto.state=encrypted
+    start keymaster_attestation-1-1
+
 on init
     mkdir /config
     mount configfs none /config
