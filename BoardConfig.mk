@@ -92,6 +92,7 @@ TW_INCLUDE_REPACKTOOLS := true
 # LZMA compression for recovery & kernel ramdisk
 BOARD_CUSTOM_BOOTIMG_MK := device/motorola/lima/custombootimg.mk
 BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
+LZMA_RAMDISK_TARGETS := boot,recovery
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
@@ -99,6 +100,6 @@ TW_INCLUDE_CRYPTO := true
 # TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
-TW_SCREEN_BLANK_ON_BOOT := true
+TW_SCREEN_BLANK_ON_BOOT := false
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true

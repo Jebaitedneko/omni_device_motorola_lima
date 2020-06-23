@@ -32,7 +32,7 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
 LZMA_BOOT_RAMDISK := $(PRODUCT_OUT)/ramdisk-lzma.img
 
 $(LZMA_BOOT_RAMDISK): $(BUILT_RAMDISK_TARGET)
-	gunzip -f < $(BUILT_RAMDISK_TARGET) | lzma -e > $@
+	gunzip -f < $(BUILT_RAMDISK_TARGET) | lzma -f -9 > $@
 
  $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(LZMA_BOOT_RAMDISK)
 	$(call pretty,"Target boot image: $@")

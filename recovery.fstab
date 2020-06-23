@@ -5,7 +5,7 @@
 # Mount point		FS	Device							Flags
 /system			ext4	/dev/block/platform/bootdevice/by-name/system		flags=slotselect
 /vendor			ext4	/dev/block/platform/bootdevice/by-name/vendor		flags=slotselect;display=Vendor;backup=1;wipeingui
-/data			f2fs	/dev/block/platform/bootdevice/by-name/userdata		flags=encryptable=footer;length=-16384
+/data			ext4	/dev/block/platform/bootdevice/by-name/userdata		flags=encryptable=footer;length=-16384
 
 /boot			emmc	/dev/block/platform/bootdevice/by-name/boot		flags=slotselect
 /recovery		emmc	/dev/block/platform/bootdevice/by-name/recovery
