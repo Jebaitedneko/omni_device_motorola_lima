@@ -1,13 +1,13 @@
-/system         ext4      /dev/block/bootdevice/by-name/system               flags=display="System"
-/system_image   emmc      /dev/block/bootdevice/by-name/system               flags=backup=0
-/vendor         ext4      /dev/block/bootdevice/by-name/vendor               flags=display="Vendor";backup=1;wipeingui
-/vendor_image   emmc      /dev/block/bootdevice/by-name/vendor               flags=backup=0
-/data           ext4      /dev/block/bootdevice/by-name/userdata             flags=encryptable=footer;length=-16384
-/data           f2fs      /dev/block/bootdevice/by-name/userdata             flags=encryptable=footer;length=-16384
-/cache          ext4      /dev/block/bootdevice/by-name/cache                flags=display="Cache"
-/recovery       emmc      /dev/block/bootdevice/by-name/recovery             flags=display="Recovery";backup=1
-/boot           emmc      /dev/block/bootdevice/by-name/boot                 flags=display="Boot"
-/misc           emmc      /dev/block/bootdevice/by-name/misc                 flags=display="Misc"
-/persist        ext4      /dev/block/bootdevice/by-name/persist              flags=display="Persist";backup=1
-/sdcard1        auto      /dev/block/mmcblk1p1                               flags=display="MicroSD";storage;wipeingui;removable
-/usb-otg        auto      /dev/block/sda1
+/system         ext4      /dev/block/platform/bootdevice/by-name/system               flags=display="System";slotselect
+/system_image   emmc      /dev/block/platform/bootdevice/by-name/system               flags=backup=0;slotselect
+/vendor         ext4      /dev/block/platform/bootdevice/by-name/vendor               flags=display="Vendor";backup=1;wipeingui;slotselect
+/vendor_image   emmc      /dev/block/platform/bootdevice/by-name/vendor               flags=backup=0;slotselect
+/data           ext4      /dev/block/platform/bootdevice/by-name/userdata             flags=encryptable=footer;length=-16384
+/data           f2fs      /dev/block/platform/bootdevice/by-name/userdata             flags=encryptable=footer;length=-16384
+/cache          ext4      /dev/block/platform/bootdevice/by-name/cache                flags=display="Cache"
+/recovery       emmc      /dev/block/platform/bootdevice/by-name/recovery             flags=display="Recovery";backup=1
+/boot           emmc      /dev/block/platform/bootdevice/by-name/boot                 flags=display="Boot";slotselect
+/misc           emmc      /dev/block/platform/bootdevice/by-name/misc                 flags=display="Misc"
+/persist        ext4      /dev/block/platform/bootdevice/by-name/persist              flags=display="Persist";backup=1
+/sdcard1        auto      /devices/platform/externdevice*                    flags=display="MicroSD";storage;wipeingui;removable
+/usb-otg        auto      /devices/platform/11200000.usb3_xhci*              flags=display="USB Storage";storage;wipeingui;removable
