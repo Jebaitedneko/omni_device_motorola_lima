@@ -1,5 +1,0 @@
-service servicemanager /vendor/bin/servicemanager
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0

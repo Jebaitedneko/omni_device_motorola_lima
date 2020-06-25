@@ -93,10 +93,6 @@ BOARD_CUSTOM_BOOTIMG_MK := device/motorola/lima/custombootimg.mk
 BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
 LZMA_RAMDISK_TARGETS := boot,recovery
 
-# Crypto
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FDE := true
-
 # TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true

@@ -1,5 +1,0 @@
-service keymaster_attestation-1-1 /vendor/bin/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-service
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0

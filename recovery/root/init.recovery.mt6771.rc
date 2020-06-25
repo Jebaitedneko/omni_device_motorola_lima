@@ -15,7 +15,6 @@ on init
     setprop ro.hardware.keystore mt6771
     setprop ro.hardware.gatekeeper mt6771
     setprop ro.hardware.bootctrl mt6771
-    setprop crypto.ready=1
 
 on property:ro.debuggable=0
     # distinguish USB shoulde connect or not, i.e. CDP vs SDP
@@ -39,16 +38,3 @@ on post-fs
     symlink /dev/block/sdb /dev/block/mmcblk0boot1
     symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
     symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
-
-on property:crypto.ready=1
-    start hwservicemanager
-    start keymaster-3-0
-    start gatekeeper-1-0
-    start servicemanager
-
-on property:crypto.ready=0
-    stop keymaster-3-0
-    stop gatekeeper-1-0
-    stop hwservicemanager
-    stop servicemanager
-

@@ -1,6 +1,0 @@
-service hwservicemanager /vendor/bin/hwservicemanager
-    user root
-    group root
-    disabled
-    onrestart setprop hwservicmanager.ready false
-    seclabel u:r:recovery:s0
