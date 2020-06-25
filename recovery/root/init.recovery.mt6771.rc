@@ -22,6 +22,9 @@ on init
     mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0770 shell shell
     mkdir /config/usb_gadget/g1/functions/ffs.adb
 	setprop sys.usb.ffs.aio_compat 1
+    setprop ro.hardware.keystore mt6771
+    setprop ro.hardware.gatekeeper mt6771
+    setprop ro.hardware.bootctrl mt6771
 
 on property:ro.debuggable=0
     # distinguish USB shoulde connect or not, i.e. CDP vs SDP

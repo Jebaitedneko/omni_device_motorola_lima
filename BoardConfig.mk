@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2019 The Android Open Source Project
-# Copyright (C) 2019 The TWRP Open Source Project
+# Copyright (C) 2019 The Android Open Source Project Copyright (C) 2019 The TWRP Open Source Project
 # Copyright (C) 2020 SebaUbuntu's TWRP device tree generator 
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,14 +47,18 @@ BOARD_KERNEL_TAGS_OFFSET := 0x13f88000
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMG_HEADER_VERSION := 1
 BOARD_BOOTIMG_HEADER_SIZE := 1648
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage-dtb
+#TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-# BOARD_MKBOOTIMG_ARGS += --header_size $(BOARD_BOOTIMG_HEADER_SIZE)
+#BOARD_MKBOOTIMG_ARGS += --header_size $(BOARD_BOOTIMG_HEADER_SIZE)
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/motorola/lima
+TARGET_KERNEL_CONFIG := lima_defconfig
 
 # Platform
-# Fix this
 TARGET_BOARD_PLATFORM := mt6771
 # TARGET_BOARD_PLATFORM_GPU := 
 
@@ -72,7 +75,6 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -85,6 +87,12 @@ PLATFORM_VERSION := 16.1.0
 # A/B
 AB_OTA_UPDATER := true
 TW_INCLUDE_REPACKTOOLS := true
+
+# LZMA compression for recovery & kernel ramdisk
+BOARD_CUSTOM_BOOTIMG_MK := device/motorola/lima/custombootimg.mk
+BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
+LZMA_RAMDISK_TARGETS := boot,recovery
+
 # TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
